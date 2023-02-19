@@ -4,8 +4,6 @@ class Entity {
     constructor(id, format_version){
         this.identifier = id;
         this.format_version = format_version;
-        this.is_spawnable = true;
-        this.is_summonable = true;
         this.typeFile = "entity";
 
         this.cmd_runners = [];
@@ -20,8 +18,8 @@ class Entity {
             "minecraft:entity": {
                 "description": {
                     "identifier": this.identifier,
-                    "is_spawnable": this.is_spawnable,
-                    "is_summonable": this.is_summonable
+                    "is_spawnable": true,
+                    "is_summonable": true
                 },
                 "component_groups": {},
                 "components": {},
@@ -35,11 +33,11 @@ class Entity {
     //Description...
 
     isSpawnable(option) {
-        this.is_spawnable = option;
+        this.baseFile["minecraft:entity"].description.is_spawnable = option;
     }
 
     isSummonable(option) {
-        this.is_spawnable = option;
+        this.baseFile["minecraft:entity"].description.is_summonable = option;
     }
 
     //Basic Properties...
