@@ -1,0 +1,29 @@
+{
+    "format_version": "1.19.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "namespace:entity",
+            "is_spawnable": true,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "a":{
+                "minecraft:explode": {
+                    "breaks_blocks": true,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": false,
+                    "fire_affected_by_griefing": false,
+                    "fuse_lit": true,
+                    "max_resistance": 0,
+                    "power": 3
+                }
+            }
+        },
+        "components": {},
+        "events": {
+            "a":{
+                ""
+            }
+        }
+    }
+}
