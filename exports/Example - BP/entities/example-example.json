@@ -3,8 +3,8 @@
     "minecraft:entity": {
         "description": {
             "identifier": "example:example",
-            "is_spawnable": true,
-            "is_summonable": true
+            "is_spawnable": false,
+            "is_summonable": false
         },
         "component_groups": {
             "moon:explosion": {
@@ -21,7 +21,10 @@
         },
         "components": {
             "minecraft:instant_despawn": {},
-            "minecraft:physics": {}
+            "minecraft:physics": {},
+            "minecraft:health": {
+                "value": 20
+            }
         },
         "events": {
             "minecraft:entity_spawned": {

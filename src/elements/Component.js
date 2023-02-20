@@ -18,6 +18,12 @@ const Component = {
         data: {
             value: 20
         }
+    },
+    attack:{
+        name: "minecraft:attack",
+        data: {
+            damage: 1
+        }
     }
 }
 
