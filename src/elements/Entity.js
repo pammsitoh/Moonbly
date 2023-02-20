@@ -45,6 +45,14 @@ class Entity {
         this.properties = properties;
     }
 
+    //Set Inmortal...
+    setInvulnerable(){
+        this.baseFile["minecraft:entity"].components["minecraft:damage_sensor"].triggers = [].push({
+            "cause": "all",
+            "deals_damage": false
+        });
+    }
+
     //Add Vanilla Component
     addComponent(component) {
         this.baseFile["minecraft:entity"].components[component.name] = component.data;
@@ -58,6 +66,12 @@ class Entity {
     //Add Vanilla Event
     addEvent(event, data) {
         this.baseFile["minecraft:entity"].events[event] = data;
+    }
+
+    //Add a template...
+    joinTemplate(TemplateObj){
+        //Join the template to the baseFile...
+        
     }
 
     //Event Listener...
