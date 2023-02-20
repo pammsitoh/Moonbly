@@ -1,30 +1,19 @@
-const { Entity, Build, Component } = require("./src/Moonbly");
-const Item = require("./src/elements/Item");
+const { Entity, Build, Component, Templates, Item } = require("./src/Moonbly");
 
 const Example = new Entity("example:example", "1.19.2");
 
 Example.isSpawnable(false);
 Example.isSummonable(false);
-Example.addComponent(Component.instant_despawn);
-Example.addComponent(Component.physics);
-Example.addComponent(Component.health);
+Example.joinTemplate(Templates.basicAI);
+Example.joinTemplate(Templates.likeNpc);
 Example.on("spawn", ent => {
     ent.explode(3);
 },1000);
 
-const myItem = new Item("example:item","1.16.100");
-
-myItem.on("spawn", ent => {
-    ent.Player.say();
-});
-
-myItem.setName("Ejemplo");
-
 //Build Section...
 Build({
     elements: [
-        Example,
-        myItem
+        Example
     ],
     manifest:{
         name: "Example",

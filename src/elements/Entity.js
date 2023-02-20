@@ -71,54 +71,50 @@ class Entity {
     //Add a template...
     joinTemplate(TemplateObj){
         //Join the template to the baseFile...
-        
+        this.baseFile["minecraft:entity"].components = {
+            ...this.baseFile["minecraft:entity"].components,
+            ...TemplateObj
+        }
     }
 
     //Event Listener...
+    /**
+     * @param {string} event
+     * @param {function} callback
+     * @returns {void}
+     */
     on( event, callback = ( ev ) => {}) {
 
-        let ev = {
-            identifier: this.identifier,
-            runCommand: (cmd) => {
-                let eventId = v4();
-                this.addEvent(eventId, {
-                    add: {
-                        component_groups:[
-                            eventId
-                        ]
-                    }
-                });
-                this.addComponentGroup(eventId,{
-                    
-                })
-                this.cmd_runners.push(eventId);
-            },
-            explode: (power) => {
-                let eventId = "moon:explosion";
-                this.addComponentGroup(eventId,{
-                    "minecraft:explode": {
-                        "breaks_blocks": true,
-                        "causes_fire": false,
-                        "destroy_affected_by_griefing": false,
-                        "fire_affected_by_griefing": false,
-                        "fuse_lit": true,
-                        "max_resistance": 0,
-                        "power": power
-                    }
-                }),
-                this.baseFile["minecraft:entity"].events[this.event_listeners[event]] = {
-                    add: {
-                        component_groups: [
-                            eventId
-                        ]
-                    }
-                }
-            },
-            say: (msg) => {}
-        };
-        
+        let ev;
+
         if( event == "spawn" ){
-            
+            ev = {
+                identifier: this.identifier,
+                explode: (power) => {
+                    let eventId = "moon:explosion";
+                    this.addComponentGroup(eventId,{
+                        "minecraft:explode": {
+                            "breaks_blocks": true,
+                            "causes_fire": false,
+                            "destroy_affected_by_griefing": false,
+                            "fire_affected_by_griefing": false,
+                            "fuse_lit": true,
+                            "max_resistance": 0,
+                            "power": power
+                        }
+                    }),
+                    this.baseFile["minecraft:entity"].events[this.event_listeners[event]] = {
+                        add: {
+                            component_groups: [
+                                eventId
+                            ]
+                        }
+                    }
+                },
+                say: (msg) => {}
+            }
+        }else if( event == "stepBlock" ){
+
         }
 
         callback(ev);
