@@ -12,6 +12,12 @@ const Component = {
         data: {
             value: 0.3
         }
+    },
+    health: {
+        name: "minecraft:health",
+        data: {
+            value: 20
+        }
     }
 }
 
