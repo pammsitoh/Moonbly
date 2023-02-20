@@ -1,0 +1,36 @@
+{
+    "format_version": "1.19.2",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "example:example",
+            "is_spawnable": true,
+            "is_summonable": true
+        },
+        "component_groups": {
+            "moon:explosion": {
+                "minecraft:explode": {
+                    "breaks_blocks": true,
+                    "causes_fire": false,
+                    "destroy_affected_by_griefing": false,
+                    "fire_affected_by_griefing": false,
+                    "fuse_lit": true,
+                    "max_resistance": 0,
+                    "power": 3
+                }
+            }
+        },
+        "components": {
+            "minecraft:instant_despawn": {},
+            "minecraft:physics": {}
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "add": {
+                    "component_groups": [
+                        "moon:explosion"
+                    ]
+                }
+            }
+        }
+    }
+}

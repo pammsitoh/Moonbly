@@ -14,7 +14,7 @@ Build({
         Example
     ],
     manifest:{
-        name: "Addon Epico",
+        name: "Example",
         description: "An example addon",
         version: "1.0.0"
     },
